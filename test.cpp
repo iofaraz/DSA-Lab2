@@ -3,49 +3,68 @@
 
 using namespace std;
 
-void testSortedArray() {
+bool isSorted(const int *arr, const int size)
+{
+    for (int i = 0; i < size - 1; i++)
+    {
+        if (arr[i] < arr[i + 1])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+void testSortedArray()
+{
     int arr[] = {1, 2, 3, 4, 5};
     bool result = isSorted(arr, 5);
     assert(result == true);
 }
 
-void testUnsortedArray() {
+void testUnsortedArray()
+{
     int arr[] = {1, 4, 3, 5, 6};
     bool result = isSorted(arr, 5);
     assert(result == false);
 }
 
-void testDuplicateValues() {
+void testDuplicateValues()
+{
     int arr[] = {1, 2, 2, 3, 5};
     bool result = isSorted(arr, 5);
     assert(result == true);
 }
 
-void testSingleElement() {
+void testSingleElement()
+{
     int arr[] = {10};
     bool result = isSorted(arr, 1);
     assert(result == true);
 }
 
-void testDescendingArray() {
+void testDescendingArray()
+{
     int arr[] = {5, 4, 3, 2, 1};
     bool result = isSorted(arr, 5);
     assert(result == false);
 }
 
-void testNegativeValues() {
+void testNegativeValues()
+{
     int arr[] = {-5, -3, -1, 0, 2};
     bool result = isSorted(arr, 5);
     assert(result == true);
 }
 
-void testEmptyArray() {
-    int arr[] = {};
-    bool result = isSorted(arr, 0);
+void testEmptyArray()
+{
+    bool result = isSorted(nullptr, 0);
     assert(result == true);
 }
 
-void testAllEqual() {
+void testAllEqual()
+{
     int arr[] = {5, 5, 5, 5};
     bool result = isSorted(arr, 4);
     assert(result == true);
